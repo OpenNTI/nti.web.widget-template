@@ -17,6 +17,30 @@ $ npm install grunt-cli karma-cli --global
 $ npm install
 ```
 
+
+### Recommended
+
+If you haven't already done so, configure `git` to make all new branches rebase on pull by default:
+```bash
+git config branch.autosetuprebase always --global
+```
+
+Set `master`, `develop` to default to rebase on pull
+```bash
+git config branch.master.rebase true
+git config branch.develop.rebase true
+```
+
+I can't make this change centrally. It must be made per-clone.  This explains why you would want to rebase on pull: http://stevenharman.net/git-pull-with-automatic-rebase
+
+It basically simplifies your interactions. so you can simply `git pull` to get updated code, instead of `git pull -r` or `git fetch && git rebase... ` etc. With out this change, a `git pull` will make a merge bubble, and thats just ugly.
+
+
+##### Building:
+```bash
+$ grunt build
+```
+
 ##### Testing:
 ```bash
 $ grunt test

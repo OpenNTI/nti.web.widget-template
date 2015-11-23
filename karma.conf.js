@@ -7,12 +7,12 @@ module.exports = function (config) {
 		frameworks: ['jasmine'],
 
 		files: [
-			'../src/test/helpers/**/*.js',
-			'../src/test/main.js'
+			'src/test/helpers/**/*.js',
+			'src/test/main.js'
 		],
 
 		preprocessors: {
-			'../src/test/**/*.js': ['webpack', 'sourcemap']
+			'src/test/**/*.js': ['webpack', 'sourcemap']
 		},
 
 		exclude: [],
@@ -92,7 +92,7 @@ module.exports = function (config) {
 			devtool: 'inline-source-map',
 
 			resolve: {
-				root: '../src/main/js',
+				root: 'src/main/js',
 				extensions: ['', '.js', '.jsx']
 			},
 

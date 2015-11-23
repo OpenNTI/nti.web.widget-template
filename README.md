@@ -13,7 +13,6 @@ Please do not checkin dist bundles. This project is intended to be included into
 
 ##### Setup:
 ```bash
-$ npm install grunt-cli karma-cli --global
 $ npm install
 ```
 
@@ -38,17 +37,24 @@ It basically simplifies your interactions. so you can simply `git pull` to get u
 
 ##### Building:
 ```bash
-$ grunt build
+$ make
 ```
 
 ##### Testing:
 ```bash
-$ grunt test
+#for continuous integration (calls karma with extra reports, see package.json)
+$ npm test
+
+# for dev (single run, basic report)
+$ karma start
+
+# for dev (watch mode)
+$ karma start --auto-watch --no-single-run --reporters dots
 ```
 
-##### Running the test harness app:
+##### Running dev:
 ```bash
-$ grunt
+$ npm start
 ```
 
 

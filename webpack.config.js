@@ -6,7 +6,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var env = process.env.NODE_ENV || 'development';
 
 exports = module.exports = {
-	entry: path.join(__dirname, '../src/main/js/index.js'),
+	entry: path.join(__dirname, 'src/main/js/index.js'),
 	output: {
 		path: 'dist',
 		filename: 'js/index.js'
@@ -24,8 +24,8 @@ exports = module.exports = {
 
 	resolve: {
 		root: [
-			path.resolve(__dirname, '../src/main/js'),
-			path.resolve(__dirname, '../node_modules')
+			path.resolve(__dirname, 'src/main/js'),
+			path.resolve(__dirname, 'node_modules')
 		],
 		extensions: ['', '.jsx', '.js']
 	},
@@ -48,7 +48,7 @@ exports = module.exports = {
 		}),
 
 		env !== 'development'
-			? new webpack.optimize.UglifyJsPlugin({ test: /\.js(x?)($|\?)/i })
+			? new webpack.optimize.UglifyJsPlugin({ test: /\.js(x?)($|\?)/i, compress: { warnings: false } })
 			: null
 
 	].filter(function (x) {return x;}),

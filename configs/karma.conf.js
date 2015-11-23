@@ -1,5 +1,6 @@
 /*eslint no-var: 0*/
-var path = require('path');
+// var path = require('path');
+
 module.exports = function (config) {
 	config.set({
 		basePath: '',
@@ -7,17 +8,17 @@ module.exports = function (config) {
 
 		files: [
 			'../src/test/helpers/**/*.js',
-			'../src/**/*.spec.js'
+			'../src/test/main.js'
 		],
+
 		preprocessors: {
-			'../src/test/helpers/**/*.js': ['webpack'],
-			'../src/**/*.spec.js': ['webpack', 'sourcemap']
+			'../src/test/**/*.js': ['webpack', 'sourcemap']
 		},
 
 		exclude: [],
 
 		port: 8090,
-		logLevel: config.LOG_INFO,
+		logLevel: config.LOG_WARN,
 		colors: true,
 		autoWatch: false,
 		// Start these browsers, currently available:
@@ -31,16 +32,29 @@ module.exports = function (config) {
 		browsers: ['PhantomJS'],
 
 
-		//coverageReporter: { type: 'html', dir: 'reports/coverage/' },
+		coverageReporter: {
+			dir: 'reports/coverage/',
+			reporters: [
+				{ type: 'html', subdir: 'html' },
+				{ type: 'lcov', subdir: 'lcov' },
+				{ type: 'cobertura', subdir: '.', file: 'cobertura.txt' },
+				{ type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' },
+				{ type: 'teamcity', subdir: '.', file: 'teamcity.txt' },
+				{ type: 'text', subdir: '.', file: 'text.txt' },
+				{ type: 'text-summary', subdir: '.', file: 'text-summary.txt' }
+			]
+		},
 
 		htmlReporter: {
-			//templatePath: __dirname+'/jasmine_template.html',
-			outputDir: 'reports/test-results'
+			outputDir: 'reports',
+			reportName: 'test-results'
 		},
 
 		junitReporter: {
-			outputFile: 'reports/test-results.xml',
-			suite: ''
+			outputDir: 'reports/test-results/',
+			outputFile: 'index.xml',
+			suite: 'react-editor-component',
+			useBrowserName: false
 		},
 
 
@@ -51,36 +65,58 @@ module.exports = function (config) {
 
 
 		webpackServer: {
+			noInfo: true,
 			stats: {
+				version: false,
+				hash: false,
+				timings: false,
+				assets: false,
+				chunks: false,
+				chunkModules: false,
+				chunkOrigins: false,
+				modules: false,
+				cached: false,
+				cachedAssets: false,
+				showChildren: false,
+				source: false,
+
 				colors: true,
-				reasons: true
-			},
-			quiet: true
+				reasons: true,
+				errorDetails: true
+			}
 		},
 
 		webpack: {
-			quiet: true,
 			cache: true,
 			debug: true,
 			devtool: 'inline-source-map',
 
-			stats: {
-				colors: true,
-				reasons: true
-			},
-
 			resolve: {
-				root: [
-					path.resolve(__dirname, '../src/main/js'),
-					path.resolve(__dirname, '../node_modules')
-				],
+				root: '../src/main/js',
 				extensions: ['', '.js', '.jsx']
 			},
 
 			module: {
+				preLoaders: [
+					{
+						test: /\.js(x)?$/,
+						loader: 'isparta-instrumenter',
+						exclude: [
+							/node_modules/i,
+							/__test__/i,
+							/tests\/.*/i
+						]
+					}
+				],
 				loaders: [
-					{ test: /\.js(x?)$/, exclude: /node_modules/, loader: 'babel' },
-					{ test: /\.json$/, loader: 'json' }
+					{ test: /\.json$/, loader: 'json' },
+					{
+						test: /\.js(x)?$/,
+						loader: 'babel',
+						exclude:[
+							/node_modules/
+						]
+					}
 				]
 			}
 		}

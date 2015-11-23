@@ -55,7 +55,7 @@ exports = module.exports = {
 
 	module: {
 		loaders: [
-			{ test: /\.js(x?)$/, exclude: /node_modules/, loader: 'babel?optional[]=runtime' },
+			{ test: /\.js(x?)$/, exclude: /node_modules/, loader: 'babel' },
 			{ test: /\.json$/, loader: 'json' },
 			{ test: /\.(ico|gif|png|jpg|svg)$/, loader: 'url?limit=100000&name=resources/images/[name].[ext]&mimeType=image/[ext]' },
 			{ test: /\.(woff|ttf|eot)$/, loader: 'file?name=resources/images/[name].[ext]' },

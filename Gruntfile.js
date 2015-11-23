@@ -14,8 +14,19 @@ module.exports = function (grunt) {
 		pkg: pkgConfig,
 
 		karma: {
-			unit: {
+			options: {
 				configFile: 'configs/karma.conf.js'
+			},
+			continuous: {
+				// browsers: ['PhantomJS', 'Firefox'],
+				reporters: ['dots', 'html', 'junit', 'coverage'],
+				singleRun: true
+			},
+			unit: {},
+			dev: {
+				reporters: 'dots',
+				singleRun: false,
+				autoWatch: true
 			}
 		},
 

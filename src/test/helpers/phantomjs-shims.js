@@ -1,5 +1,5 @@
 /*eslint no-var:0, no-extra-strict: 0, strict: 0*/
-require('babel/polyfill');//applies hooks into global
+require('babel-polyfill');//applies hooks into global
 
 (function () {
 	'use strict';

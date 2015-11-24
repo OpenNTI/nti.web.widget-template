@@ -1,8 +1,8 @@
 import 'babel-polyfill';
+import '../resources/scss/main.scss';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../resources/scss/main.scss';
 
 
 ReactDOM.render((

@@ -4,7 +4,7 @@
   "description": "Widget Template Project",
   "scripts": {
     "test": "karma start --single-run --reporters dots,html,junit,coverage",
-    "start": "make check && webpack-dev-server --info false -d --watch --progress --content-base src/main/ --port 8000",
+    "start": "make check && webpack-dev-server -d --content-base src/main/ --port 8000 --info false --watch --progress --inline",
     "build": "make"
   },
   "repository": {

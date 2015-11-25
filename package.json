@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Widget Template Project",
   "engines": {
-      "node": ">=5.0.0"
+      "node": ">=5.0.0",
       "npm": ">=3.3.0"
   },
   "scripts": {

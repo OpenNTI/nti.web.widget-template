@@ -10,7 +10,7 @@ DIST=./dist/
 SRC=./src/
 IMAGES=resources/images/
 
-CC=webpack --progress --cache --bail --config
+CC=webpack --progress --cache --bail
 
 export NODE_ENV="production"
 
@@ -31,7 +31,7 @@ compile: clean
 ## copy static assets
 	@(cd $(SRC)main; rsync -R *.* ../../$(DIST))
 ##compile
-	@$(CC) ./configs/webpack.config.js
+	@$(CC)
 
 
 clean:

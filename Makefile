@@ -10,15 +10,19 @@ DIST=./dist/
 SRC=./src/
 IMAGES=resources/images/
 
-CC=webpack --progress --cache --bail
+CC=webpack
+C_FLAGS=--progress --cache --bail
 
 export NODE_ENV="production"
 
 all: check build
 
-setup:
-	@rm -r node_modules
+setup: node_modules
+
+node_modules: package.json
+	@rm -r $@
 	@npm install
+	@touch $@
 
 check:
 	@eslint --ext .js,.jsx .
@@ -26,12 +30,12 @@ check:
 build: compile
 	@echo "Done."
 
-compile: clean
+compile: node_modules clean
 	@mkdir -p $(DIST)
 ## copy static assets
 	@(cd $(SRC)main; rsync -R *.* ../../$(DIST))
 ##compile
-	@$(CC)
+	@$(CC) $(C_FLAGS)
 
 
 clean:

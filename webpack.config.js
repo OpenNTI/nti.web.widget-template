@@ -54,6 +54,10 @@ exports = module.exports = {
 	].filter(function (x) {return x;}),
 
 	module: {
+		preLoaders: [
+			{ test: /\.jsx$/, loader: 'baggage?[file].scss' }
+		],
+
 		loaders: [
 			{ test: /\.js(x?)$/, exclude: /node_modules/, loader: 'babel' },
 			{ test: /\.json$/, loader: 'json' },

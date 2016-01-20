@@ -2,6 +2,12 @@
   "name": "nti.web.widget-template",
   "version": "1.0.0",
   "description": "Widget Template Project",
+  "author": "nextthought",
+  "license": "UNLICENCED",
+  "private": true,
+  "files": [
+    "dist"
+  ],
   "engines": {
       "node": ">=5.0.0",
       "npm": ">=3.3.0"
@@ -19,9 +25,6 @@
     "react",
     "widget"
   ],
-  "author": "nextthought",
-  "license": "Apache-2.0",
-  "private": true,
   "dependencies": {},
   "devDependencies": {
     "autoprefixer-loader": "^3.1.0",

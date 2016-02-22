@@ -1,4 +1,5 @@
 /*eslint no-var: 0*/
+var autoprefixer = require('autoprefixer');
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -65,11 +66,13 @@ exports = module.exports = {
 			{ test: /\.(woff|ttf|eot)$/, loader: 'file?name=resources/images/[name].[ext]' },
 			{ test: /\.(s?)css$/, loader: ExtractTextPlugin.extract(
 				'style-loader',
-				(env !== 'development'
-					? 'css?-minimize!autoprefixer!sass?'
-					: 'css?sourceMap!autoprefixer!sass?sourceMap&'
-				))
+				'css?sourceMap&-minimize!postcss-loader!resolve-url!sass?sourceMap'
+				)
 			}
 		]
-	}
+	},
+
+	postcss: [
+		autoprefixer({ browsers: ['> 1%', 'last 2 versions'] })
+	]
 };

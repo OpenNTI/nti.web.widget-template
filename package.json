@@ -9,13 +9,13 @@
     "dist"
   ],
   "engines": {
-      "node": ">=5.0.0",
-      "npm": ">=3.3.0"
+    "node": ">=5.0.0",
+    "npm": ">=3.3.0"
   },
   "scripts": {
     "test": "karma start --single-run --reporters dots,html,junit,coverage",
     "start": "make check && webpack-dev-server -d --content-base src/main/ --host 0.0.0.0 --port 8000 --info false --watch --progress --inline || true",
-    "build": "make"
+    "prepublish": "not-in-install && make || in-install"
   },
   "repository": {
     "type": "git",
@@ -45,6 +45,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "fbjs": "^0.7.2",
     "file-loader": "^0.8.4",
+    "in-publish": "^2.0.0",
     "invariant": "^2.1.1",
     "isparta-instrumenter-loader": "^1.0.0",
     "jasmine-core": "^2.2.0",

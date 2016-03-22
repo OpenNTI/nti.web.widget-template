@@ -14,7 +14,6 @@ exports = module.exports = {
 	},
 
 	cache: true,
-	debug: true,
 	devtool: 'source-map',
 
 	target: 'web',

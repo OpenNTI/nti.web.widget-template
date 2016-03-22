@@ -18,10 +18,6 @@ exports = module.exports = {
 	devtool: 'source-map',
 
 	target: 'web',
-	stats: {
-		colors: true,
-		reasons: true
-	},
 
 	resolve: {
 		root: [

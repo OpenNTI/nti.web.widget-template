@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://repos.nextthought.com/nti.web.widget-template"
+    "url": "https://github.com/NextThought/nti.web.widget-template.git"
   },
   "keywords": [
     "react",

@@ -46,10 +46,10 @@ $ make
 $ npm test
 
 # for dev (single run, basic report)
-$ karma start
+$ jest
 
 # for dev (watch mode)
-$ karma start --auto-watch --no-single-run --reporters dots
+$ jest --watch
 ```
 
 ##### Running dev:

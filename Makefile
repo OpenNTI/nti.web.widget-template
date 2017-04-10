@@ -1,11 +1,6 @@
-.PHONY: all
-.PHONY: build
-.PHONY: check
-.PHONY: compile
-.PHONY: setup
-.PHONY: clean
+.PHONY: all build check clean compile setup test
 
-
+REPORTS=./reports/
 DIST=./dist/
 SRC=./src/
 IMAGES=resources/images/
@@ -15,7 +10,7 @@ C_FLAGS=--progress --cache --bail
 
 export NODE_ENV="production"
 
-all: check build
+all: test build
 
 setup: node_modules
 
@@ -26,6 +21,9 @@ node_modules: package.json
 
 check:
 	@eslint --ext .js,.jsx .
+
+test: clean check
+	@jest
 
 build: compile
 	@echo "Done."
@@ -38,8 +36,9 @@ compile: node_modules clean
 	@sed -e 's/\(react.*\)\.js/\1.min.js/g' $(DIST)index.html > $(DIST)index.min
 	@mv $(DIST)index.min $(DIST)index.html
 ##compile
-	@$(CC) $(C_FLAGS)
+	@NODE_ENV="production" $(CC) $(C_FLAGS)
 
 
 clean:
 	@rm -rf $(DIST)
+	@rm -rf $(REPORTS)

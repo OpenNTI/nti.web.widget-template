@@ -21,7 +21,7 @@ exports = module.exports = {
 	},
 
 	cache: true,
-	devtool: 'source-map',
+	devtool: 'cheap-module-source-map',
 
 	target: 'web',
 

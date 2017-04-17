@@ -56,7 +56,12 @@ exports = module.exports = {
 				}
 			},
 			{
-				test: /\.js(x?)$/,
+				test: /\.jsx?$/,
+				enforce: 'pre',
+				loader: 'source-map-loader'
+			},
+			{
+				test: /\.jsx?$/,
 				exclude: /node_modules/,
 				loader: 'babel-loader'
 			},

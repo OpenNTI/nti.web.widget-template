@@ -63,6 +63,7 @@
     "react-dom": "^15.5.3",
     "resolve-url-loader": "^2.0.0",
     "sass-loader": "^6.0.0",
+    "source-map-loader": "^0.2.1",
     "stats-webpack-plugin": "^0.5.0",
     "style-loader": "0.x.x",
     "url-loader": "^0.5.6",
